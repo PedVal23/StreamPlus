@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamPlus | Tus Cuentas y Perfiles de Streaming al Mejor Precio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#08090D',
+                            card: '#11131B',
+                            border: '#202434',
+                            accent: '#6366F1',
+                            neon: '#00F0FF',
+                            purple: '#A855F7',
+                            pink: '#EC4899',
+                            success: '#10B981'
+                        },
+                        whatsapp: {
+                            DEFAULT: '#25D366',
+                            hover: '#1EBE5D',
+                            dark: '#128C7E'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'neon-glow': '0 0 25px -5px rgba(0, 240, 255, 0.3)',
+                        'purple-glow': '0 0 25px -5px rgba(168, 85, 247, 0.3)',
+                        'whatsapp-glow': '0 0 20px 0 rgba(37, 211, 102, 0.4)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom animations & Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #08090D;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #202434;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366F1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00F0FF 0%, #A855F7 50%, #EC4899 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(17, 19, 27, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .pulse-whatsapp {
+            animation: pulse-wa 2s infinite;
+        }
+
+        @keyframes pulse-wa {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .badge-discount {
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-gray-100 font-sans antialiased selection:bg-brand-accent selection:text-white min-h-screen flex flex-col">
+
+    <!-- 1. BANNER SUPERIOR DE URGENCIA CON CONTADOR -->
+    <div id="top-banner" class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 border-b border-white/10 text-white text-xs sm:text-sm py-2 px-4 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="inline-flex items-center justify-center bg-red-500 text-white font-black text-[10px] uppercase px-2 py-0.5 rounded-full animate-pulse">
+                    OFERTA FLASH
+                </span>
+                <span class="font-medium">Ahorra hasta <strong class="text-brand-neon font-bold">70% OFF</strong> en tus suscripciones de streaming hoy.</span>
+            </div>
+            <div class="flex items-center gap-3 font-mono font-bold text-xs bg-black/40 px-3 py-1 rounded-full border border-white/10">
+                <span class="text-gray-300 font-sans text-[11px] font-normal hidden md:inline">La oferta termina en:</span>
+                <div class="flex items-center gap-1 text-brand-neon">
+                    <span id="timer-hours">04</span>h :
+                    <span id="timer-minutes">28</span>m :
+                    <span id="timer-seconds">45</span>s
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. NAVBAR / HEADER PRINCIPAL -->
+    <header class="bg-brand-dark/80 backdrop-blur-md border-b border-brand-border sticky top-[37px] sm:top-[33px] z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-accent via-brand-purple to-brand-pink flex items-center justify-center text-white shadow-purple-glow group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-play text-lg ml-0.5"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading font-black text-2xl tracking-tight text-white flex items-center gap-1">
+                        Stream<span class="gradient-text">Plus</span>
+                    </span>
+                    <span class="text-[10px] text-gray-400 tracking-widest uppercase font-semibold">Premium Streaming</span>
+                </div>
+            </a>
+
+            <!-- Links Desktop -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#catalog" class="hover:text-brand-neon transition-colors flex items-center gap-1.5"><i class="fa-solid fa-grid-2 text-xs"></i> Catálogo</a>
+                <a href="#combos" class="hover:text-brand-neon transition-colors flex items-center gap-1.5"><i class="fa-solid fa-fire text-amber-400"></i> Combos Ahorro</a>
+                <a href="#benefits" class="hover:text-brand-neon transition-colors">Beneficios</a>
+                <a href="#reviews" class="hover:text-brand-neon transition-colors">Opiniones</a>
+                <a href="#faq" class="hover:text-brand-neon transition-colors">FAQ</a>
+            </nav>
+
+            <!-- CTA WhatsApp Header -->
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20información%20sobre%20las%20cuentas%20de%20streaming%20en%20oferta" 
+                   target="_blank" 
+                   class="bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-sm px-5 py-2.5 rounded-xl transition-all flex items-center gap-2 shadow-whatsapp-glow transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Contactar Asesor</span>
+                </a>
+            </div>
+
+            <!-- Botón Menú Mobile -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2 text-xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menú desplegable Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-card border-b border-brand-border px-4 pt-3 pb-6 space-y-3">
+            <a href="#catalog" class="block py-2 text-gray-300 hover:text-brand-neon font-medium border-b border-gray-800">Catálogo de Servicios</a>
+            <a href="#combos" class="block py-2 text-gray-300 hover:text-brand-neon font-medium border-b border-gray-800">Combos Ahorro</a>
+            <a href="#benefits" class="block py-2 text-gray-300 hover:text-brand-neon font-medium border-b border-gray-800">¿Por qué elegirnos?</a>
+            <a href="#reviews" class="block py-2 text-gray-300 hover:text-brand-neon font-medium border-b border-gray-800">Testimonios</a>
+            <a href="#faq" class="block py-2 text-gray-300 hover:text-brand-neon font-medium border-b border-gray-800">Preguntas Frecuentes</a>
+            <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20información%20sobre%20las%20cuentas%20de%20streaming" 
+               target="_blank" 
+               class="w-full bg-whatsapp text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-whatsapp-glow mt-4">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                <span>Pedir por WhatsApp</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 3. HERO SECTION -->
+    <section class="relative py-12 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-brand-accent/20 via-brand-purple/20 to-brand-pink/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Columna Texto -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-brand-border/80 border border-brand-accent/30 text-brand-neon px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold shadow-inner">
+                        <i class="fa-solid fa-bolt text-amber-400"></i>
+                        <span>Entrega Inmediata + Garantía Total</span>
+                    </div>
+
+                    <h1 class="font-heading font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.15]">
+                        Disfruta de Todo Tu <span class="gradient-text">Streaming Favorito</span> al Menor Precio
+                    </h1>
+
+                    <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Obtén acceso premium a Netflix, Disney+, Max, Amazon Prime, Spotify y más. Perfiles personales o cuentas completas con <strong class="text-white">soporte 24/7 y activación inmediata</strong>.
+                    </p>
+
+                    <!-- CTAs Hero -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#catalog" class="w-full sm:w-auto bg-gradient-to-r from-brand-accent via-brand-purple to-brand-pink text-white font-extrabold text-base px-8 py-4 rounded-xl shadow-purple-glow hover:opacity-95 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <span>Ver Catálogo y Precios</span>
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                        <a href="https://wa.me/573042124439?text=Hola!%20Me%20gustaría%20saber%20qué%20cuentas%20tienen%20disponibles%20hoy" 
+                           target="_blank" 
+                           class="w-full sm:w-auto glass-card hover:bg-white/10 text-white font-bold text-base px-8 py-4 rounded-xl transition-all border border-gray-700 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl text-whatsapp"></i>
+                            <span>Atención Directa</span>
+                        </a>
+                    </div>
+
+                    <!-- Features de Confianza -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-border/80 max-w-lg mx-auto lg:mx-0 text-left">
+                        <div class="flex flex-col items-center lg:items-start">
+                            <span class="text-brand-neon font-black text-xl sm:text-2xl font-heading">+5,000</span>
+                            <span class="text-gray-400 text-xs">Clientes Activos</span>
+                        </div>
+                        <div class="flex flex-col items-center lg:items-start border-x border-brand-border/60 px-2">
+                            <span class="text-brand-purple font-black text-xl sm:text-2xl font-heading">100%</span>
+                            <span class="text-gray-400 text-xs">Garantizadas</span>
+                        </div>
+                        <div class="flex flex-col items-center lg:items-start">
+                            <span class="text-brand-pink font-black text-xl sm:text-2xl font-heading">&lt; 5 min</span>
+                            <span class="text-gray-400 text-xs">Entrega Promedio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Visual Mockup / Logos -->
+                <div class="lg:col-span-5 relative">
+                    <div class="glass-card p-6 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden">
+                        <!-- Glow interno -->
+                        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-accent/30 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <div class="flex items-center justify-between pb-4 border-b border-brand-border mb-6">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <span class="text-xs font-mono text-gray-400">StreamPlus App v2.4</span>
+                        </div>
+
+                        <!-- Grid de logos flotantes decorativos -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-gradient-to-br from-red-950/60 to-black p-4 rounded-2xl border border-red-500/30 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center font-black text-white text-xl shadow-lg">N</div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Netflix 4K</h4>
+                                    <span class="text-[11px] text-emerald-400 font-medium"><i class="fa-solid fa-circle text-[8px]"></i> Disponible</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-gradient-to-br from-blue-950/60 to-black p-4 rounded-2xl border border-blue-500/30 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center font-black text-white text-xl shadow-lg">D+</div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Disney+ Combo</h4>
+                                    <span class="text-[11px] text-emerald-400 font-medium"><i class="fa-solid fa-circle text-[8px]"></i> Disponible</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-gradient-to-br from-sky-950/60 to-black p-4 rounded-2xl border border-sky-500/30 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-sky-500 flex items-center justify-center font-black text-white text-lg shadow-lg"><i class="fa-solid fa-film"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Prime Video</h4>
+                                    <span class="text-[11px] text-emerald-400 font-medium"><i class="fa-solid fa-circle text-[8px]"></i> Disponible</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-gradient-to-br from-purple-950/60 to-black p-4 rounded-2xl border border-purple-500/30 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center font-black text-white text-sm shadow-lg">MAX</div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">HBO Max</h4>
+                                    <span class="text-[11px] text-emerald-400 font-medium"><i class="fa-solid fa-circle text-[8px]"></i> Disponible</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card de promoción interior -->
+                        <div class="mt-6 p-4 rounded-2xl bg-gradient-to-r from-brand-accent/20 to-brand-purple/20 border border-brand-accent/40 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-brand-neon font-bold uppercase tracking-wider">Super Combo Familiar</span>
+                                <h5 class="text-white font-bold text-sm">4 Servicios x 1 Precio</h5>
+                            </div>
+                            <span class="bg-brand-accent text-white text-xs font-black px-3 py-1.5 rounded-lg">-60% OFF</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BARRA DE CONFIANZA / METODOS DE PAGO -->
+    <section class="border-y border-brand-border bg-brand-card/50 py-6 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-around gap-6 text-gray-400 text-xs sm:text-sm font-semibold">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-shield-check text-brand-neon text-lg"></i> Cuentas 100% Personales y Privadas</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-clock-rotate-left text-brand-purple text-lg"></i> Renovación en la misma cuenta</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-headset text-brand-pink text-lg"></i> Soporte 24/7 post-venta</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-credit-card text-emerald-400 text-lg"></i> Pagos por Nequi, Daviplata, Binance, Zelle, Tarjetas</span>
+        </div>
+    </section>
+
+    <!-- 4. CATÁLOGO DE PRODUCTOS INDIVIDUALES -->
+    <section id="catalog" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+                Catálogo de <span class="gradient-text">Plataformas Individuales</span>
+            </h2>
+            <p class="text-gray-400 mt-2 text-sm sm:text-base">
+                Selecciona la plataforma que deseas, elije la duración o tipo de plan y compra directamente por WhatsApp con activación instantánea.
+            </p>
+
+            <!-- Buscador y Filtros -->
+            <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center">
+                <div class="relative w-full sm:w-80">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input type="text" id="search-input" placeholder="Buscar plataforma (ej. Netflix)..." 
+                           class="w-full bg-brand-card border border-brand-border rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-accent transition-colors">
+                </div>
+                <div class="flex gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-none">
+                    <button class="filter-btn active bg-brand-accent text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all" data-category="all">Todos</button>
+                    <button class="filter-btn bg-brand-card border border-brand-border text-gray-300 hover:text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all" data-category="cine">Series y Películas</button>
+                    <button class="filter-btn bg-brand-card border border-brand-border text-gray-300 hover:text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all" data-category="musica">Música / Video</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRID DE PRODUCTOS -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="products-grid">
+
+            <!-- PRODUCTO 1: NETFLIX -->
+            <div class="product-card glass-card rounded-2xl border border-brand-border hover:border-red-500/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="cine" data-name="netflix">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-600 to-red-950 flex items-center justify-center text-white font-black text-2xl shadow-lg border border-red-500/40">
+                            N
+                        </div>
+                        <span class="badge-discount text-white text-xs font-black px-3 py-1 rounded-full shadow">
+                            AHORRA 60%
+                        </span>
+                    </div>
+
+                    <h3 class="font-heading font-bold text-xl text-white">Netflix Ultra HD 4K</h3>
+                    <p class="text-xs text-gray-400 mt-1">Cine y series ilimitadas en máxima calidad sin anuncios.</p>
+
+                    <!-- Selector de Modalidad -->
+                    <div class="mt-4 bg-brand-dark/80 p-1 rounded-xl border border-brand-border flex text-xs font-semibold">
+                        <button class="plan-tab active w-1/2 py-2 rounded-lg bg-brand-card text-white shadow text-center transition-all" onclick="selectPlan(this, 'netflix', '1 Perfil Personal', '$3.99 USD', '$9.99 USD')">
+                            1 Perfil Personal
+                        </button>
+                        <button class="plan-tab w-1/2 py-2 rounded-lg text-gray-400 hover:text-white text-center transition-all" onclick="selectPlan(this, 'netflix', 'Cuenta Completa (4 Pantallas)', '$11.99 USD', '$24.99 USD')">
+                            Cuenta Completa
+                        </button>
+                    </div>
+
+                    <!-- Precio Dinámico -->
+                    <div class="my-5 flex items-baseline gap-2">
+                        <span class="price-display font-heading font-black text-2xl text-white">$3.99 USD</span>
+                        <span class="price-original text-xs text-gray-500 line-through">$9.99 USD</span>
+                        <span class="text-[11px] text-gray-400 font-medium">/ mes</span>
+                    </div>
+
+                    <!-- Lista de beneficios -->
+                    <ul class="space-y-2 text-xs text-gray-300 border-t border-brand-border/60 pt-4 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Perfil propio con PIN de seguridad</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Calidad Ultra HD 4K + HDR</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Garantía total los 30 días</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Renovable mes a mes</li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20Netflix%20-%201%20Perfil%20Personal%20por%20$3.99%20USD" 
+                   target="_blank" 
+                   class="btn-whatsapp-dynamic w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar por WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- PRODUCTO 2: DISNEY+ & STAR+ -->
+            <div class="product-card glass-card rounded-2xl border border-brand-border hover:border-blue-500/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="cine" data-name="disney">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-slate-950 flex items-center justify-center text-white font-black text-xl shadow-lg border border-blue-500/40">
+                            D+
+                        </div>
+                        <span class="badge-discount text-white text-xs font-black px-3 py-1 rounded-full shadow">
+                            AHORRA 65%
+                        </span>
+                    </div>
+
+                    <h3 class="font-heading font-bold text-xl text-white">Disney+ Premium</h3>
+                    <p class="text-xs text-gray-400 mt-1">Deportes en vivo con ESPN, Marvel, Star Wars y películas.</p>
+
+                    <div class="mt-4 bg-brand-dark/80 p-1 rounded-xl border border-brand-border flex text-xs font-semibold">
+                        <button class="plan-tab active w-1/2 py-2 rounded-lg bg-brand-card text-white shadow text-center transition-all" onclick="selectPlan(this, 'disney', '1 Perfil Premium', '$2.99 USD', '$7.99 USD')">
+                            1 Perfil
+                        </button>
+                        <button class="plan-tab w-1/2 py-2 rounded-lg text-gray-400 hover:text-white text-center transition-all" onclick="selectPlan(this, 'disney', 'Cuenta Completa', '$7.99 USD', '$14.99 USD')">
+                            Cuenta Completa
+                        </button>
+                    </div>
+
+                    <div class="my-5 flex items-baseline gap-2">
+                        <span class="price-display font-heading font-black text-2xl text-white">$2.99 USD</span>
+                        <span class="price-original text-xs text-gray-500 line-through">$7.99 USD</span>
+                        <span class="text-[11px] text-gray-400 font-medium">/ mes</span>
+                    </div>
+
+                    <ul class="space-y-2 text-xs text-gray-300 border-t border-brand-border/60 pt-4 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Incluye todos los eventos ESPN en VIVO</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Sin anuncios molestos</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Calidad IMAX Enhanced / 4K</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Soporte de reemplazo rápido</li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20Disney+%20-%201%20Perfil%20Premium%20por%20$2.99%20USD" 
+                   target="_blank" 
+                   class="btn-whatsapp-dynamic w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar por WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- PRODUCTO 3: MAX (HBO MAX) -->
+            <div class="product-card glass-card rounded-2xl border border-brand-border hover:border-purple-500/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="cine" data-name="max hbo">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-700 to-indigo-950 flex items-center justify-center text-white font-black text-sm shadow-lg border border-purple-500/40">
+                            MAX
+                        </div>
+                        <span class="badge-discount text-white text-xs font-black px-3 py-1 rounded-full shadow">
+                            AHORRA 50%
+                        </span>
+                    </div>
+
+                    <h3 class="font-heading font-bold text-xl text-white">Max (HBO Max)</h3>
+                    <p class="text-xs text-gray-400 mt-1">Series de HBO, estrenos de cine Warner Bros y Champions League.</p>
+
+                    <div class="mt-4 bg-brand-dark/80 p-1 rounded-xl border border-brand-border flex text-xs font-semibold">
+                        <button class="plan-tab active w-1/2 py-2 rounded-lg bg-brand-card text-white shadow text-center transition-all" onclick="selectPlan(this, 'max', '1 Perfil Personal', '$2.50 USD', '$5.99 USD')">
+                            1 Perfil
+                        </button>
+                        <button class="plan-tab w-1/2 py-2 rounded-lg text-gray-400 hover:text-white text-center transition-all" onclick="selectPlan(this, 'max', 'Cuenta Completa', '$6.50 USD', '$11.99 USD')">
+                            Cuenta Completa
+                        </button>
+                    </div>
+
+                    <div class="my-5 flex items-baseline gap-2">
+                        <span class="price-display font-heading font-black text-2xl text-white">$2.50 USD</span>
+                        <span class="price-original text-xs text-gray-500 line-through">$5.99 USD</span>
+                        <span class="text-[11px] text-gray-400 font-medium">/ mes</span>
+                    </div>
+
+                    <ul class="space-y-2 text-xs text-gray-300 border-t border-brand-border/60 pt-4 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Plan Platinum 4K UHD</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Múltiples dispositivos compatibles</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Descargas ilimitadas para ver offline</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Pin privado habilitado</li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20Max%20(HBO)%20-%201%20Perfil%20Personal%20por%20$2.50%20USD" 
+                   target="_blank" 
+                   class="btn-whatsapp-dynamic w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar por WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- PRODUCTO 4: AMAZON PRIME VIDEO -->
+            <div class="product-card glass-card rounded-2xl border border-brand-border hover:border-sky-500/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="cine" data-name="amazon prime">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-950 flex items-center justify-center text-white text-2xl shadow-lg border border-sky-400/40">
+                            <i class="fa-solid fa-film"></i>
+                        </div>
+                        <span class="badge-discount text-white text-xs font-black px-3 py-1 rounded-full shadow">
+                            OFERTA
+                        </span>
+                    </div>
+
+                    <h3 class="font-heading font-bold text-xl text-white">Amazon Prime Video</h3>
+                    <p class="text-xs text-gray-400 mt-1">Series exclusivas, películas y envíos rápidos si aplica.</p>
+
+                    <div class="mt-4 bg-brand-dark/80 p-1 rounded-xl border border-brand-border flex text-xs font-semibold">
+                        <button class="plan-tab active w-1/2 py-2 rounded-lg bg-brand-card text-white shadow text-center transition-all" onclick="selectPlan(this, 'prime', '1 Perfil', '$2.00 USD', '$4.99 USD')">
+                            1 Perfil
+                        </button>
+                        <button class="plan-tab w-1/2 py-2 rounded-lg text-gray-400 hover:text-white text-center transition-all" onclick="selectPlan(this, 'prime', 'Cuenta Completa', '$5.00 USD', '$9.99 USD')">
+                            Cuenta Completa
+                        </button>
+                    </div>
+
+                    <div class="my-5 flex items-baseline gap-2">
+                        <span class="price-display font-heading font-black text-2xl text-white">$2.00 USD</span>
+                        <span class="price-original text-xs text-gray-500 line-through">$4.99 USD</span>
+                        <span class="text-[11px] text-gray-400 font-medium">/ mes</span>
+                    </div>
+
+                    <ul class="space-y-2 text-xs text-gray-300 border-t border-brand-border/60 pt-4 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Calidad HD y 4K HDR</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Acceso inmediato con tu correo</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Sin interrupciones durante el mes</li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20Amazon%20Prime%20-%201%20Perfil%20por%20$2.00%20USD" 
+                   target="_blank" 
+                   class="btn-whatsapp-dynamic w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar por WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- PRODUCTO 5: SPOTIFY PREMIUM -->
+            <div class="product-card glass-card rounded-2xl border border-brand-border hover:border-emerald-500/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="musica" data-name="spotify">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-950 flex items-center justify-center text-white text-2xl shadow-lg border border-emerald-400/40">
+                            <i class="fa-brands fa-spotify"></i>
+                        </div>
+                        <span class="badge-discount text-white text-xs font-black px-3 py-1 rounded-full shadow">
+                            POPULAR
+                        </span>
+                    </div>
+
+                    <h3 class="font-heading font-bold text-xl text-white">Spotify Premium</h3>
+                    <p class="text-xs text-gray-400 mt-1">Música ilimitada sin anuncios, saltos ilimitados y descargas.</p>
+
+                    <div class="mt-4 bg-brand-dark/80 p-1 rounded-xl border border-brand-border flex text-xs font-semibold">
+                        <button class="plan-tab active w-1/2 py-2 rounded-lg bg-brand-card text-white shadow text-center transition-all" onclick="selectPlan(this, 'spotify', '1 Mes Personal', '$2.99 USD', '$6.99 USD')">
+                            1 Mes
+                        </button>
+                        <button class="plan-tab w-1/2 py-2 rounded-lg text-gray-400 hover:text-white text-center transition-all" onclick="selectPlan(this, 'spotify', '3 Meses Promocional', '$6.99 USD', '$18.99 USD')">
+                            3 Meses
+                        </button>
+                    </div>
+
+                    <div class="my-5 flex items-baseline gap-2">
+                        <span class="price-display font-heading font-black text-2xl text-white">$2.99 USD</span>
+                        <span class="price-original text-xs text-gray-500 line-through">$6.99 USD</span>
+                        <span class="text-[11px] text-gray-400 font-medium">/ mes</span>
+                    </div>
+
+                    <ul class="space-y-2 text-xs text-gray-300 border-t border-brand-border/60 pt-4 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Activación en tu propia cuenta personal</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Conservas todas tus playlists y listas</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Calidad de audio Muy Alta (320kbps)</li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20Spotify%20Premium%20-%201%20Mes%20Personal%20por%20$2.99%20USD" 
+                   target="_blank" 
+                   class="btn-whatsapp-dynamic w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar por WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- PRODUCTO 6: YOUTUBE PREMIUM -->
+            <div class="product-card glass-card rounded-2xl border border-brand-border hover:border-red-500/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="musica" data-name="youtube">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-600 to-rose-950 flex items-center justify-center text-white text-2xl shadow-lg border border-red-500/40">
+                            <i class="fa-brands fa-youtube"></i>
+                        </div>
+                        <span class="badge-discount text-white text-xs font-black px-3 py-1 rounded-full shadow">
+                            RECOMENDADO
+                        </span>
+                    </div>
+
+                    <h3 class="font-heading font-bold text-xl text-white">YouTube Premium + Music</h3>
+                    <p class="text-xs text-gray-400 mt-1">Cero anuncios en videos, reproducción en segundo plano y YT Music.</p>
+
+                    <div class="mt-4 bg-brand-dark/80 p-1 rounded-xl border border-brand-border flex text-xs font-semibold">
+                        <button class="plan-tab active w-1/2 py-2 rounded-lg bg-brand-card text-white shadow text-center transition-all" onclick="selectPlan(this, 'youtube', '1 Mes a tu Gmail', '$2.50 USD', '$5.99 USD')">
+                            1 Mes
+                        </button>
+                        <button class="plan-tab w-1/2 py-2 rounded-lg text-gray-400 hover:text-white text-center transition-all" onclick="selectPlan(this, 'youtube', '3 Meses a tu Gmail', '$5.99 USD', '$15.99 USD')">
+                            3 Meses
+                        </button>
+                    </div>
+
+                    <div class="my-5 flex items-baseline gap-2">
+                        <span class="price-display font-heading font-black text-2xl text-white">$2.50 USD</span>
+                        <span class="price-original text-xs text-gray-500 line-through">$5.99 USD</span>
+                        <span class="text-[11px] text-gray-400 font-medium">/ mes</span>
+                    </div>
+
+                    <ul class="space-y-2 text-xs text-gray-300 border-t border-brand-border/60 pt-4 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Se vincula a tu correo de Gmail personal</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Incluye YouTube Music Premium app</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Reproduce con la pantalla apagada</li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20YouTube%20Premium%20-%201%20Mes%20a%20tu%20Gmail%20por%20$2.50%20USD" 
+                   target="_blank" 
+                   class="btn-whatsapp-dynamic w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar por WhatsApp</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. SECCIÓN DE COMBOS AHORRO (UPSELL / CROSS-SELL) -->
+    <section id="combos" class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-brand-dark via-brand-card to-brand-dark border-y border-brand-border">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="bg-gradient-to-r from-amber-500 to-red-500 text-white font-black text-xs uppercase tracking-widest px-4 py-1.5 rounded-full shadow">
+                    PAQUETES ESPECIALES
+                </span>
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white mt-4">
+                    Combos <span class="gradient-text">Máximo Ahorro</span>
+                </h2>
+                <p class="text-gray-400 text-sm sm:text-base mt-2">
+                    Lleva varias plataformas reunidas en un solo paquete con descuentos masivos.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                
+                <!-- COMBO 1: DUO CINE -->
+                <div class="glass-card rounded-3xl p-8 border-2 border-brand-accent/40 relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-4 right-4 bg-brand-accent text-white font-black text-xs px-3 py-1 rounded-lg">
+                        MÁS POPULAR
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="flex -space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white font-bold border-2 border-brand-dark">N</div>
+                                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold border-2 border-brand-dark">D+</div>
+                            </div>
+                            <h3 class="font-heading font-black text-2xl text-white">Combo DÚO Cine</h3>
+                        </div>
+
+                        <p class="text-gray-400 text-xs mb-6">Netflix 1 Perfil 4K + Disney+ 1 Perfil Premium en un solo pago mensual.</p>
+
+                        <div class="bg-brand-dark/90 p-4 rounded-2xl border border-brand-border mb-6 flex justify-between items-center">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Precio individual separado: <span class="line-through">$17.98 USD</span></span>
+                                <span class="font-heading font-black text-3xl text-brand-neon">$5.99 <span class="text-xs font-normal text-gray-300">USD / mes</span></span>
+                            </div>
+                            <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-3 py-1.5 rounded-xl border border-emerald-500/30">
+                                Ahorras $12 USD
+                            </span>
+                        </div>
+
+                        <ul class="space-y-2 text-xs text-gray-300 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-neon"></i> Perfiles personales asignados inmediatamente</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-neon"></i> Soporte unificado para ambas cuentas</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-neon"></i> Garantía extendida de estabilidad</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20adquirir%20el%20Combo%20DUO%20Cine%20(Netflix%20+%20Disney+)%20por%20$5.99USD" 
+                       target="_blank" 
+                       class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-extrabold py-4 rounded-xl flex items-center justify-center gap-2 shadow-whatsapp-glow transition-all">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>PEDIR COMBO DÚO POR WHATSAPP</span>
+                    </a>
+                </div>
+
+                <!-- COMBO 2: FULL ENTRETENIMIENTO -->
+                <div class="glass-card rounded-3xl p-8 border-2 border-brand-purple/40 relative overflow-hidden flex flex-col justify-between">
+                    <div class="absolute top-4 right-4 bg-gradient-to-r from-brand-purple to-brand-pink text-white font-black text-xs px-3 py-1 rounded-lg">
+                        MEJOR VALOR
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="flex -space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white font-bold border-2 border-brand-dark">N</div>
+                                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold border-2 border-brand-dark">D+</div>
+                                <div class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-xs border-2 border-brand-dark">MAX</div>
+                                <div class="w-10 h-10 rounded-full bg-sky-500 flex items-center justify-center text-white text-xs border-2 border-brand-dark"><i class="fa-solid fa-film"></i></div>
+                            </div>
+                            <h3 class="font-heading font-black text-2xl text-white">Combo FULL 4 en 1</h3>
+                        </div>
+
+                        <p class="text-gray-400 text-xs mb-6">Netflix + Disney+ + Max (HBO) + Prime Video. Todo el cine del mundo en tu pantalla.</p>
+
+                        <div class="bg-brand-dark/90 p-4 rounded-2xl border border-brand-border mb-6 flex justify-between items-center">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Precio individual separado: <span class="line-through">$28.96 USD</span></span>
+                                <span class="font-heading font-black text-3xl text-brand-pink">$9.99 <span class="text-xs font-normal text-gray-300">USD / mes</span></span>
+                            </div>
+                            <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-3 py-1.5 rounded-xl border border-emerald-500/30">
+                                Ahorras 65% OFF
+                            </span>
+                        </div>
+
+                        <ul class="space-y-2 text-xs text-gray-300 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-pink"></i> 4 Plataformas top en un solo mensaje de WhatsApp</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-pink"></i> Configuración lista en menos de 10 minutos</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-pink"></i> Atención prioritaria 24/7 de asesor dedicado</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20adquirir%20el%20Combo%20FULL%204%20en%201%20por%20$9.99USD" 
+                       target="_blank" 
+                       class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-extrabold py-4 rounded-xl flex items-center justify-center gap-2 shadow-whatsapp-glow transition-all">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>PEDIR COMBO FULL POR WHATSAPP</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. POR QUÉ ELEGIRNOS / BENEFICIOS -->
+    <section id="benefits" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+                ¿Por qué somos la opción <span class="gradient-text">N° 1 en Streaming</span>?
+            </h2>
+            <p class="text-gray-400 mt-2 text-sm">
+                Seguridad, rapidez y un servicio transparente respaldado por miles de clientes satisfechos.
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass-card p-6 rounded-2xl border border-brand-border text-center space-y-3">
+                <div class="w-12 h-12 bg-brand-accent/20 text-brand-neon rounded-2xl flex items-center justify-center text-xl mx-auto border border-brand-accent/30">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h3 class="font-bold text-white text-base">Entrega Inmediata</h3>
+                <p class="text-gray-400 text-xs">Una vez confirmado tu pago, recibes tus credenciales de acceso por WhatsApp en cuestión de minutos.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-brand-border text-center space-y-3">
+                <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-xl mx-auto border border-emerald-500/30">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3 class="font-bold text-white text-base">Garantía Total 100%</h3>
+                <p class="text-gray-400 text-xs">Si surge cualquier inconveniente durante tu mes contratado, te lo solucionamos o reemplazamos de inmediato.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-brand-border text-center space-y-3">
+                <div class="w-12 h-12 bg-brand-purple/20 text-brand-purple rounded-2xl flex items-center justify-center text-xl mx-auto border border-brand-purple/30">
+                    <i class="fa-solid fa-rotate text-xl"></i>
+                </div>
+                <h3 class="font-bold text-white text-base">Sin Caídas ni Bloqueos</h3>
+                <p class="text-gray-400 text-xs">Cuentas creadas legalmente y con métodos estables para que no pierdas tu perfil ni tu historial.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-brand-border text-center space-y-3">
+                <div class="w-12 h-12 bg-brand-pink/20 text-brand-pink rounded-2xl flex items-center justify-center text-xl mx-auto border border-brand-pink/30">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+                <h3 class="font-bold text-white text-base">Facilidad de Pago</h3>
+                <p class="text-gray-400 text-xs">Aceptamos transferencias locales (Nequi, Daviplata, Banesco, etc.), criptos (Binance) y tarjetas internacionales.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. PRUEBA SOCIAL / TESTIMONIOS -->
+    <section id="reviews" class="py-16 px-4 sm:px-6 lg:px-8 bg-brand-card/40 border-t border-brand-border">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <div class="flex items-center justify-center gap-1 text-amber-400 text-lg mb-2">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <h2 class="font-heading font-extrabold text-3xl text-white">Lo que dicen nuestros clientes</h2>
+                <p class="text-gray-400 text-xs sm:text-sm mt-1">Más de 5,000 usuarios disfrutan de su entretenimiento diario con nosotros.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Testimonio 1 -->
+                <div class="glass-card p-6 rounded-2xl border border-brand-border flex flex-col justify-between">
+                    <p class="text-gray-300 text-xs italic leading-relaxed mb-4">
+                        "Compré la pantalla de Netflix y el proceso fue súper rápido. En menos de 5 minutos ya me estaban enviando el correo y el PIN de mi perfil. Llevo 3 meses renovando sin problemas."
+                    </p>
+                    <div class="flex items-center gap-3 pt-3 border-t border-brand-border/60">
+                        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-white font-bold text-sm">
+                            MA
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-xs">Miguel Ángel R.</h4>
+                            <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-check-circle"></i> Comprador verificado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 2 -->
+                <div class="glass-card p-6 rounded-2xl border border-brand-border flex flex-col justify-between">
+                    <p class="text-gray-300 text-xs italic leading-relaxed mb-4">
+                        "El Combo FULL es una maravilla. Tengo Disney para los niños, Netflix para mi esposa y yo veo los partidos en ESPN y Max. Me ahorro muchísimo dinero al mes."
+                    </p>
+                    <div class="flex items-center gap-3 pt-3 border-t border-brand-border/60">
+                        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-pink-500 to-rose-500 flex items-center justify-center text-white font-bold text-sm">
+                            CL
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-xs">Carolina López</h4>
+                            <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-check-circle"></i> Comprador verificado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 3 -->
+                <div class="glass-card p-6 rounded-2xl border border-brand-border flex flex-col justify-between">
+                    <p class="text-gray-300 text-xs italic leading-relaxed mb-4">
+                        "Lo que más me gusta es la atención por WhatsApp. Una vez tuve una duda con el acceso a Spotify y el soporte me respondió en el acto a las 11 de la noche. 10/10 en servicio."
+                    </p>
+                    <div class="flex items-center gap-3 pt-3 border-t border-brand-border/60">
+                        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 to-red-500 flex items-center justify-center text-white font-bold text-sm">
+                            DV
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-xs">David Vegas</h4>
+                            <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-check-circle"></i> Comprador verificado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. PREGUNTAS FRECUENTES (FAQ ACORDEÓN) -->
+    <section id="faq" class="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full">
+        <div class="text-center mb-10">
+            <h2 class="font-heading font-extrabold text-3xl text-white">Preguntas Frecuentes</h2>
+            <p class="text-gray-400 text-xs sm:text-sm mt-1">Resolvemos todas tus dudas antes de comprar</p>
+        </div>
+
+        <div class="space-y-4" id="faq-accordion">
+            <!-- FAQ 1 -->
+            <div class="glass-card rounded-2xl border border-brand-border overflow-hidden">
+                <button class="w-full p-5 text-left font-bold text-white text-sm sm:text-base flex justify-between items-center focus:outline-none faq-btn">
+                    <span>¿Cómo entregan las cuentas después del pago?</span>
+                    <i class="fa-solid fa-chevron-down text-brand-neon transition-transform"></i>
+                </button>
+                <div class="px-5 pb-5 hidden text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-brand-border/40 pt-3">
+                    La entrega se realiza de forma inmediata a través del chat de WhatsApp. Recibirás tu usuario, contraseña, instrucciones de ingreso y el número de perfil/PIN que te corresponde según el plan seleccionado.
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="glass-card rounded-2xl border border-brand-border overflow-hidden">
+                <button class="w-full p-5 text-left font-bold text-white text-sm sm:text-base flex justify-between items-center focus:outline-none faq-btn">
+                    <span>¿Qué garantía tienen las suscripciones?</span>
+                    <i class="fa-solid fa-chevron-down text-brand-neon transition-transform"></i>
+                </button>
+                <div class="px-5 pb-5 hidden text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-brand-border/40 pt-3">
+                    Ofrecemos 100% de garantía durante la totalidad del tiempo contratado (30 días, 3 meses, etc.). Si llegaras a experimentar problemas de acceso, nuestro equipo de soporte te ayuda o genera un reemplazo de credenciales en minutos.
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="glass-card rounded-2xl border border-brand-border overflow-hidden">
+                <button class="w-full p-5 text-left font-bold text-white text-sm sm:text-base flex justify-between items-center focus:outline-none faq-btn">
+                    <span>¿Puedo renovar la misma cuenta el siguiente mes?</span>
+                    <i class="fa-solid fa-chevron-down text-brand-neon transition-transform"></i>
+                </button>
+                <div class="px-5 pb-5 hidden text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-brand-border/40 pt-3">
+                    ¡Sí! Te avisamos 2 días antes del vencimiento para que realices la renovación y así mantengas exactamente la misma cuenta, tu historial de reproducción, favoritos y configuraciones personales.
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="glass-card rounded-2xl border border-brand-border overflow-hidden">
+                <button class="w-full p-5 text-left font-bold text-white text-sm sm:text-base flex justify-between items-center focus:outline-none faq-btn">
+                    <span>¿Qué medios de pago aceptan?</span>
+                    <i class="fa-solid fa-chevron-down text-brand-neon transition-transform"></i>
+                </button>
+                <div class="px-5 pb-5 hidden text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-brand-border/40 pt-3">
+                    Aceptamos una amplia variedad de métodos: Transferencias bancarias locales (Nequi, Daviplata, Bancolombia, Banesco, Pago Móvil), criptomonedas (Binance Pay / USDT), PayPal y Tarjetas de Crédito/Débito.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. CTA FINAL CON SOLICITUD DIRECTA -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full text-center">
+        <div class="glass-card rounded-3xl p-8 sm:p-12 border border-brand-accent/30 bg-gradient-to-b from-brand-card via-brand-dark to-brand-card relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-60 h-60 bg-brand-accent/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <span class="inline-block text-brand-neon font-black text-xs uppercase tracking-widest bg-brand-accent/10 px-4 py-1.5 rounded-full border border-brand-accent/30 mb-4">
+                ¿Tienes dudas o buscas un plan a medida?
+            </span>
+
+            <h2 class="font-heading font-black text-3xl sm:text-4xl text-white">
+                Estamos en línea para atenderte <span class="gradient-text">Ahora Mismo</span>
+            </h2>
+
+            <p class="text-gray-400 text-sm max-w-xl mx-auto mt-3 mb-8">
+                Haz clic abajo y chatea directamente con uno de nuestros agentes para resolver tus preguntas, verificar disponibilidad o solicitar tu cuenta.
+            </p>
+
+            <a href="https://wa.me/573042124439?text=Hola!%20Deseo%20comprar%20cuentas%20de%20streaming%20en%20oferta" 
+               target="_blank" 
+               class="inline-flex items-center justify-center gap-3 bg-whatsapp hover:bg-whatsapp-hover text-white font-extrabold text-base sm:text-lg px-8 py-4 rounded-2xl shadow-whatsapp-glow transition-all transform hover:scale-105">
+                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                <span>CHAT EN VIVO POR WHATSAPP</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-brand-border bg-brand-dark py-8 px-4 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto space-y-4">
+            <div class="flex items-center justify-center gap-2 font-heading font-bold text-white text-lg">
+                <i class="fa-solid fa-play text-brand-accent"></i> StreamPlus
+            </div>
+            <p>© 2026 StreamPlus Store. Todos los derechos reservados.</p>
+            <p class="text-[11px] text-gray-600 max-w-2xl mx-auto">
+                Aviso: Los nombres de productos, marcas registradas y logos pertenecen a sus respectivos propietarios. Este sitio no está afiliado ni patrocinado de manera directa por Netflix, Disney, Amazon o HBO.
+            </p>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20una%20cuenta%20de%20streaming" 
+       target="_blank" 
+       class="pulse-whatsapp fixed bottom-6 right-6 z-50 bg-whatsapp text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform"
+       title="Chatear por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- SCRIPTS INTERACTIVOS -->
+    <script>
+        // 1. Contador Regresivo (Countdown Timer)
+        function startTimer() {
+            let hours = 4, minutes = 28, seconds = 45;
+            const hElem = document.getElementById('timer-hours');
+            const mElem = document.getElementById('timer-minutes');
+            const sElem = document.getElementById('timer-seconds');
+
+            if (hElem && mElem && sElem) {
+                setInterval(() => {
+                    if (seconds > 0) {
+                        seconds--;
+                    } else {
+                        seconds = 59;
+                        if (minutes > 0) {
+                            minutes--;
+                        } else {
+                            minutes = 59;
+                            if (hours > 0) {
+                                hours--;
+                            } else {
+                                hours = 23;
+                            }
+                        }
+                    }
+                    hElem.textContent = hours < 10 ? '0' + hours : hours;
+                    mElem.textContent = minutes < 10 ? '0' + minutes : minutes;
+                    sElem.textContent = seconds < 10 ? '0' + seconds : seconds;
+                }, 1000);
+            }
+        }
+        startTimer();
+
+        // 2. Menú Hamburguesa Mobile
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // 3. Selección de Plan/Modalidad Dinámica en Tarjetas de Producto
+        function selectPlan(btn, serviceKey, planName, newPrice, originalPrice) {
+            const card = btn.closest('.product-card');
+            if (!card) return;
+            
+            // Cambiar estados de botones de plan
+            const tabs = card.querySelectorAll('.plan-tab');
+            tabs.forEach(t => {
+                t.classList.remove('active', 'bg-brand-card', 'text-white', 'shadow');
+                t.classList.add('text-gray-400');
+            });
+            btn.classList.add('active', 'bg-brand-card', 'text-white', 'shadow');
+            btn.classList.remove('text-gray-400');
+
+            // Actualizar precio en pantalla
+            const priceDisplay = card.querySelector('.price-display');
+            const originalDisplay = card.querySelector('.price-original');
+            if (priceDisplay) priceDisplay.textContent = newPrice;
+            if (originalDisplay) originalDisplay.textContent = originalPrice;
+
+            // Actualizar enlace de WhatsApp
+            const waBtn = card.querySelector('.btn-whatsapp-dynamic');
+            const phone = "573042124439";
+            const message = encodeURIComponent(`Hola! Quiero comprar ${serviceKey.toUpperCase()} - ${planName} por el precio de ${newPrice}`);
+            if (waBtn) {
+                waBtn.href = `https://wa.me/${phone}?text=${message}`;
+            }
+        }
+
+        // 4. Filtro y Buscador de Productos
+        const searchInput = document.getElementById('search-input');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        function filterProducts() {
+            if (!searchInput) return;
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const activeFilterElem = document.querySelector('.filter-btn.active');
+            const activeFilter = activeFilterElem ? activeFilterElem.dataset.category : 'all';
+
+            productCards.forEach(card => {
+                const name = card.dataset.name ? card.dataset.name.toLowerCase() : '';
+                const category = card.dataset.category;
+
+                const matchesSearch = name.includes(searchTerm);
+                const matchesCategory = activeFilter === 'all' || category === activeFilter;
+
+                if (matchesSearch && matchesCategory) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', filterProducts);
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-brand-accent', 'text-white');
+                    b.classList.add('bg-brand-card', 'text-gray-300');
+                });
+                btn.classList.add('active', 'bg-brand-accent', 'text-white');
+                btn.classList.remove('bg-brand-card', 'text-gray-300');
+                filterProducts();
+            });
+        });
+
+        // 5. Acordeón para FAQs
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+
+                if (content) content.classList.toggle('hidden');
+                if (icon) {
+                    if (content && content.classList.contains('hidden')) {
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
