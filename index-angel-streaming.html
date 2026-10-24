@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angel Streaming | Tus Cuentas y Perfiles de Streaming al Mejor Precio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#08090D',
+                            card: '#11131B',
+                            border: '#202434',
+                            accent: '#6366F1',
+                            neon: '#00F0FF',
+                            purple: '#A855F7',
+                            pink: '#EC4899',
+                            success: '#10B981'
+                        },
+                        whatsapp: {
+                            DEFAULT: '#25D366',
+                            hover: '#1EBE5D',
+                            dark: '#128C7E'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'neon-glow': '0 0 25px -5px rgba(0, 240, 255, 0.3)',
+                        'purple-glow': '0 0 25px -5px rgba(168, 85, 247, 0.3)',
+                        'whatsapp-glow': '0 0 20px 0 rgba(37, 211, 102, 0.4)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #08090D;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #202434;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366F1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00F0FF 0%, #A855F7 50%, #EC4899 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(17, 19, 27, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .pulse-whatsapp {
+            animation: pulse-wa 2s infinite;
+        }
+
+        @keyframes pulse-wa {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .badge-discount {
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+        }
+
+        .badge-combo {
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-gray-100 font-sans antialiased selection:bg-brand-accent selection:text-white min-h-screen flex flex-col">
+
+    <!-- 1. BANNER SUPERIOR DE URGENCIA CON CONTADOR -->
+    <div id="top-banner" class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 border-b border-white/10 text-white text-xs sm:text-sm py-2 px-4 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="inline-flex items-center justify-center bg-red-500 text-white font-black text-[10px] uppercase px-2 py-0.5 rounded-full animate-pulse">
+                    OFERTA FLASH
+                </span>
+                <span class="font-medium">Combos Especiales con hasta <strong class="text-brand-neon font-bold">70% OFF</strong>. Renovables mes a mes.</span>
+            </div>
+            <div class="flex items-center gap-3 font-mono font-bold text-xs bg-black/40 px-3 py-1 rounded-full border border-white/10">
+                <span class="text-gray-300 font-sans text-[11px] font-normal hidden md:inline">La oferta termina en:</span>
+                <div class="flex items-center gap-1 text-brand-neon">
+                    <span id="timer-hours">04</span>h :
+                    <span id="timer-minutes">28</span>m :
+                    <span id="timer-seconds">45</span>s
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. NAVBAR / HEADER PRINCIPAL -->
+    <header class="bg-brand-dark/80 backdrop-blur-md border-b border-brand-border sticky top-[37px] sm:top-[33px] z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-accent via-brand-purple to-brand-pink flex items-center justify-center text-white shadow-purple-glow group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-play text-lg ml-0.5"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading font-black text-2xl tracking-tight text-white flex items-center gap-1">
+                        Angel<span class="gradient-text">Streaming</span>
+                    </span>
+                    <span class="text-[10px] text-gray-400 tracking-widest uppercase font-semibold">100% Garantizado & Renovables</span>
+                </div>
+            </a>
+
+            <!-- Links Desktop -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#catalog" class="hover:text-brand-neon transition-colors flex items-center gap-1.5"><i class="fa-solid fa-grid-2 text-xs"></i> Plataformas Individuales</a>
+                <a href="#combos" class="hover:text-brand-neon transition-colors flex items-center gap-1.5"><i class="fa-solid fa-fire text-amber-400"></i> Combos de Promoción</a>
+                <a href="#benefits" class="hover:text-brand-neon transition-colors">Beneficios</a>
+                <a href="#reviews" class="hover:text-brand-neon transition-colors">Opiniones</a>
+                <a href="#faq" class="hover:text-brand-neon transition-colors">FAQ</a>
+            </nav>
+
+            <!-- CTA WhatsApp Header -->
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20información%20sobre%20las%20cuentas%20y%20combos%20de%20streaming" 
+                   target="_blank" 
+                   class="bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-sm px-5 py-2.5 rounded-xl transition-all flex items-center gap-2 shadow-whatsapp-glow transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Contactar Asesor</span>
+                </a>
+            </div>
+
+            <!-- Botón Menú Mobile -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2 text-xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menú desplegable Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-card border-b border-brand-border px-4 pt-3 pb-6 space-y-3">
+            <a href="#catalog" class="block py-2 text-gray-300 hover:text-brand-neon font-medium border-b border-gray-800">Plataformas Individuales</a>
+            <a href="#combos" class="block py-2 text-gray-300 hover:text-brand-neon font-medium border-b border-gray-800">Combos y Paquetes</a>
+            <a href="#benefits" class="block py-2 text-gray-300 hover:text-brand-neon font-medium border-b border-gray-800">¿Por qué elegirnos?</a>
+            <a href="#reviews" class="block py-2 text-gray-300 hover:text-brand-neon font-medium border-b border-gray-800">Testimonios</a>
+            <a href="#faq" class="block py-2 text-gray-300 hover:text-brand-neon font-medium border-b border-gray-800">Preguntas Frecuentes</a>
+            <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20cuentas%20o%20combos%20en%20Angel%20Streaming" 
+               target="_blank" 
+               class="w-full bg-whatsapp text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-whatsapp-glow mt-4">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                <span>Pedir por WhatsApp</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 3. HERO SECTION -->
+    <section class="relative py-12 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-brand-accent/20 via-brand-purple/20 to-brand-pink/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Columna Texto -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-brand-border/80 border border-brand-accent/30 text-brand-neon px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold shadow-inner">
+                        <i class="fa-solid fa-bolt text-amber-400"></i>
+                        <span>Atención Inmediata + Medios de Pago Bre-B / Daviplata</span>
+                    </div>
+
+                    <h1 class="font-heading font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.15]">
+                        Cuentas Individuales & <span class="gradient-text">Combos Especiales</span> Renovables
+                    </h1>
+
+                    <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Combina tus plataformas favoritas como Netflix, Prime Video, HBO Max y Disney+ desde <strong class="text-white">$13.000 COP</strong>. Cuentas originales con garantía y renovación mes a mes.
+                    </p>
+
+                    <!-- CTAs Hero -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#combos" class="w-full sm:w-auto bg-gradient-to-r from-brand-accent via-brand-purple to-brand-pink text-white font-extrabold text-base px-8 py-4 rounded-xl shadow-purple-glow hover:opacity-95 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <span>Ver Combos en Oferta</span>
+                            <i class="fa-solid fa-fire text-amber-300"></i>
+                        </a>
+                        <a href="#catalog" class="w-full sm:w-auto glass-card hover:bg-white/10 text-white font-bold text-base px-8 py-4 rounded-xl transition-all border border-gray-700 flex items-center justify-center gap-2">
+                            <span>Plataformas Individuales</span>
+                        </a>
+                    </div>
+
+                    <!-- Features de Confianza -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-border/80 max-w-lg mx-auto lg:mx-0 text-left">
+                        <div class="flex flex-col items-center lg:items-start">
+                            <span class="text-brand-neon font-black text-xl sm:text-2xl font-heading">+5,000</span>
+                            <span class="text-gray-400 text-xs">Clientes Activos</span>
+                        </div>
+                        <div class="flex flex-col items-center lg:items-start border-x border-brand-border/60 px-2">
+                            <span class="text-brand-purple font-black text-xl sm:text-2xl font-heading">100%</span>
+                            <span class="text-gray-400 text-xs">Garantizados</span>
+                        </div>
+                        <div class="flex flex-col items-center lg:items-start">
+                            <span class="text-brand-pink font-black text-xl sm:text-2xl font-heading">Mes a Mes</span>
+                            <span class="text-gray-400 text-xs">Renovables</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Visual Mockup -->
+                <div class="lg:col-span-5 relative">
+                    <div class="glass-card p-6 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-accent/30 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <div class="flex items-center justify-between pb-4 border-b border-brand-border mb-6">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <span class="text-xs font-mono text-gray-400">Angel Streaming Promos</span>
+                        </div>
+
+                        <!-- Card de Muestra de Combo Destacado -->
+                        <div class="bg-gradient-to-br from-indigo-950 to-purple-950 p-6 rounded-2xl border border-indigo-500/40 text-center space-y-4">
+                            <span class="bg-brand-neon text-black font-black text-[10px] uppercase px-3 py-1 rounded-full">SUPER COMBO 11</span>
+                            
+                            <div class="flex justify-center items-center -space-x-3 my-2">
+                                <div class="w-12 h-12 rounded-full bg-sky-600 flex items-center justify-center font-bold text-white text-xs border-2 border-black shadow">Prime</div>
+                                <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center font-bold text-white text-xs border-2 border-black shadow">Disney</div>
+                                <div class="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center font-bold text-white text-xs border-2 border-black shadow">HBO</div>
+                                <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center font-bold text-white text-sm border-2 border-black shadow">N</div>
+                            </div>
+
+                            <h4 class="font-heading font-black text-xl text-white">4 PLATAFORMAS COMPLETAS</h4>
+                            <p class="text-xs text-gray-300">Prime Video + Disney + HBO Max + Netflix</p>
+                            
+                            <div class="text-3xl font-black font-heading text-brand-neon">
+                                $33.000 COP
+                            </div>
+
+                            <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20el%20Combo%2011%20(4%20Plataformas)%20por%20$33.000COP" 
+                               target="_blank" 
+                               class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-extrabold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-whatsapp-glow transition-all">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                <span>Pedir Ahora por WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BARRA DE MEDIOS DE PAGO Y GARANTÍA -->
+    <section class="border-y border-brand-border bg-brand-card/50 py-6 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-around gap-6 text-gray-300 text-xs sm:text-sm font-semibold">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-shield-check text-brand-neon text-lg"></i> Cuentas 100% Garantizadas</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-rotate text-brand-purple text-lg"></i> Renovables Mes a Mes</span>
+            <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-amber-400 text-lg"></i> Pagos con Bre-B & Daviplata</span>
+            <span class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i> Chat Directo 3042124439</span>
+        </div>
+    </section>
+
+    <!-- 4. SECCIÓN DE COMBOS DE PROMOCIÓN (FOLLETO OFICIAL) -->
+    <section id="combos" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-black text-xs uppercase tracking-widest px-4 py-1.5 rounded-full shadow">
+                LISTA OFICIAL DE COMBOS
+            </span>
+            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white mt-4">
+                Combos Especiales <span class="gradient-text">Angel Streaming</span>
+            </h2>
+            <p class="text-gray-400 text-sm sm:text-base mt-2">
+                Ahorra dinero combinando de 2 a 4 servicios. Cuentas originales 100% garantizadas.
+            </p>
+        </div>
+
+        <!-- GRID DE COMBOS DEL FOLLETO -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- COMBO 1 -->
+            <div class="glass-card rounded-2xl border border-brand-border hover:border-brand-purple/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-brand-accent/20 border border-brand-accent/40 text-brand-neon text-xs font-black px-3 py-1 rounded-full">COMBO 1</span>
+                        <span class="text-xs text-gray-400 font-semibold">2 Servicios</span>
+                    </div>
+                    <div class="flex items-center justify-center -space-x-3 my-6">
+                        <div class="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center font-black text-white text-2xl border-2 border-brand-dark shadow-lg">N</div>
+                        <div class="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center font-black text-white text-base border-2 border-brand-dark shadow-lg">Disney</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white text-center">Netflix + Disney+</h3>
+                    <p class="text-xs text-gray-400 text-center mt-1">El paquete perfecto de cine, series y deportes.</p>
+                    
+                    <div class="my-6 text-center">
+                        <span class="font-heading font-black text-3xl text-white">$23.000 <span class="text-xs text-gray-400 font-normal">COP / mes</span></span>
+                    </div>
+                </div>
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20el%20COMBO%201%20(Netflix%20+%20Disney)%20por%20$23.000COP" target="_blank" class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-whatsapp-glow transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar Combo 1</span>
+                </a>
+            </div>
+
+            <!-- COMBO 2 -->
+            <div class="glass-card rounded-2xl border border-brand-border hover:border-brand-purple/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-brand-accent/20 border border-brand-accent/40 text-brand-neon text-xs font-black px-3 py-1 rounded-full">COMBO 2</span>
+                        <span class="text-xs text-gray-400 font-semibold">2 Servicios</span>
+                    </div>
+                    <div class="flex items-center justify-center -space-x-3 my-6">
+                        <div class="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center font-black text-white text-2xl border-2 border-brand-dark shadow-lg">N</div>
+                        <div class="w-14 h-14 rounded-full bg-sky-500 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">Prime</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white text-center">Netflix + Prime Video</h3>
+                    <p class="text-xs text-gray-400 text-center mt-1">Doble catálogo de películas y series originales.</p>
+                    
+                    <div class="my-6 text-center">
+                        <span class="font-heading font-black text-3xl text-white">$19.000 <span class="text-xs text-gray-400 font-normal">COP / mes</span></span>
+                    </div>
+                </div>
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20el%20COMBO%202%20(Netflix%20+%20Prime%20Video)%20por%20$19.000COP" target="_blank" class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-whatsapp-glow transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar Combo 2</span>
+                </a>
+            </div>
+
+            <!-- COMBO 3 -->
+            <div class="glass-card rounded-2xl border border-brand-border hover:border-brand-purple/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-brand-accent/20 border border-brand-accent/40 text-brand-neon text-xs font-black px-3 py-1 rounded-full">COMBO 3</span>
+                        <span class="text-xs text-gray-400 font-semibold">2 Servicios</span>
+                    </div>
+                    <div class="flex items-center justify-center -space-x-3 my-6">
+                        <div class="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center font-black text-white text-2xl border-2 border-brand-dark shadow-lg">N</div>
+                        <div class="w-14 h-14 rounded-full bg-purple-700 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">HBO</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white text-center">Netflix + HBO Max</h3>
+                    <p class="text-xs text-gray-400 text-center mt-1">Súper producciones y los estrenos más vistos.</p>
+                    
+                    <div class="my-6 text-center">
+                        <span class="font-heading font-black text-3xl text-white">$19.000 <span class="text-xs text-gray-400 font-normal">COP / mes</span></span>
+                    </div>
+                </div>
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20el%20COMBO%203%20(Netflix%20+%20HBO%20Max)%20por%20$19.000COP" target="_blank" class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-whatsapp-glow transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar Combo 3</span>
+                </a>
+            </div>
+
+            <!-- COMBO 4 -->
+            <div class="glass-card rounded-2xl border border-brand-border hover:border-brand-purple/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-brand-accent/20 border border-brand-accent/40 text-brand-neon text-xs font-black px-3 py-1 rounded-full">COMBO 4</span>
+                        <span class="text-xs text-gray-400 font-semibold">2 Servicios</span>
+                    </div>
+                    <div class="flex items-center justify-center -space-x-3 my-6">
+                        <div class="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">Disney</div>
+                        <div class="w-14 h-14 rounded-full bg-purple-700 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">HBO</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white text-center">Disney+ + HBO Max</h3>
+                    <p class="text-xs text-gray-400 text-center mt-1">Deportes ESPN, animación y series dramáticas.</p>
+                    
+                    <div class="my-6 text-center">
+                        <span class="font-heading font-black text-3xl text-white">$18.000 <span class="text-xs text-gray-400 font-normal">COP / mes</span></span>
+                    </div>
+                </div>
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20el%20COMBO%204%20(Disney%20+%20HBO%20Max)%20por%20$18.000COP" target="_blank" class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-whatsapp-glow transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar Combo 4</span>
+                </a>
+            </div>
+
+            <!-- COMBO 5 -->
+            <div class="glass-card rounded-2xl border border-brand-border hover:border-brand-purple/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-brand-accent/20 border border-brand-accent/40 text-brand-neon text-xs font-black px-3 py-1 rounded-full">COMBO 5</span>
+                        <span class="text-xs text-gray-400 font-semibold">2 Servicios</span>
+                    </div>
+                    <div class="flex items-center justify-center -space-x-3 my-6">
+                        <div class="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">Disney</div>
+                        <div class="w-14 h-14 rounded-full bg-sky-500 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">Prime</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white text-center">Disney+ + Prime Video</h3>
+                    <p class="text-xs text-gray-400 text-center mt-1">Gran variedad de cine familiar y entretenimiento.</p>
+                    
+                    <div class="my-6 text-center">
+                        <span class="font-heading font-black text-3xl text-white">$18.000 <span class="text-xs text-gray-400 font-normal">COP / mes</span></span>
+                    </div>
+                </div>
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20el%20COMBO%205%20(Disney%20+%20Prime%20Video)%20por%20$18.000COP" target="_blank" class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-whatsapp-glow transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar Combo 5</span>
+                </a>
+            </div>
+
+            <!-- COMBO 6 -->
+            <div class="glass-card rounded-2xl border border-brand-border hover:border-brand-purple/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-brand-accent/20 border border-brand-accent/40 text-brand-neon text-xs font-black px-3 py-1 rounded-full">COMBO 6</span>
+                        <span class="text-xs text-gray-400 font-semibold">2 Servicios</span>
+                    </div>
+                    <div class="flex items-center justify-center -space-x-3 my-6">
+                        <div class="w-14 h-14 rounded-full bg-sky-500 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">Prime</div>
+                        <div class="w-14 h-14 rounded-full bg-purple-700 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">HBO</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white text-center">Prime Video + HBO Max</h3>
+                    <p class="text-xs text-gray-400 text-center mt-1">Opción súper económica para ver lo mejor en streaming.</p>
+                    
+                    <div class="my-6 text-center">
+                        <span class="font-heading font-black text-3xl text-brand-neon">$13.000 <span class="text-xs text-gray-400 font-normal">COP / mes</span></span>
+                    </div>
+                </div>
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20el%20COMBO%206%20(Prime%20Video%20+%20HBO%20Max)%20por%20$13.000COP" target="_blank" class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-whatsapp-glow transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar Combo 6</span>
+                </a>
+            </div>
+
+            <!-- COMBO 7 -->
+            <div class="glass-card rounded-2xl border border-brand-purple/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 bg-gradient-to-b from-brand-card to-purple-950/20">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="badge-combo text-white text-xs font-black px-3 py-1 rounded-full shadow">COMBO 7</span>
+                        <span class="text-xs text-brand-purple font-bold">3 Servicios</span>
+                    </div>
+                    <div class="flex items-center justify-center -space-x-3 my-6">
+                        <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center font-black text-white text-xl border-2 border-brand-dark shadow-lg">N</div>
+                        <div class="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">HBO</div>
+                        <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">Disney</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white text-center">Netflix + HBO Max + Disney+</h3>
+                    <p class="text-xs text-gray-400 text-center mt-1">Trío de entretenimiento ilimitado.</p>
+                    
+                    <div class="my-6 text-center">
+                        <span class="font-heading font-black text-3xl text-white">$26.000 <span class="text-xs text-gray-400 font-normal">COP / mes</span></span>
+                    </div>
+                </div>
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20el%20COMBO%207%20(Netflix%20+%20HBO%20Max%20+%20Disney)%20por%20$26.000COP" target="_blank" class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-whatsapp-glow transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar Combo 7</span>
+                </a>
+            </div>
+
+            <!-- COMBO 8 -->
+            <div class="glass-card rounded-2xl border border-brand-purple/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 bg-gradient-to-b from-brand-card to-purple-950/20">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="badge-combo text-white text-xs font-black px-3 py-1 rounded-full shadow">COMBO 8</span>
+                        <span class="text-xs text-brand-purple font-bold">3 Servicios</span>
+                    </div>
+                    <div class="flex items-center justify-center -space-x-3 my-6">
+                        <div class="w-12 h-12 rounded-full bg-sky-500 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">Prime</div>
+                        <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">Disney</div>
+                        <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center font-black text-white text-xl border-2 border-brand-dark shadow-lg">N</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white text-center">Prime Video + Disney+ + Netflix</h3>
+                    <p class="text-xs text-gray-400 text-center mt-1">Combinación potente para la familia.</p>
+                    
+                    <div class="my-6 text-center">
+                        <span class="font-heading font-black text-3xl text-white">$27.000 <span class="text-xs text-gray-400 font-normal">COP / mes</span></span>
+                    </div>
+                </div>
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20el%20COMBO%208%20(Prime%20Video%20+%20Disney%20+%20Netflix)%20por%20$27.000COP" target="_blank" class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-whatsapp-glow transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar Combo 8</span>
+                </a>
+            </div>
+
+            <!-- COMBO 9 -->
+            <div class="glass-card rounded-2xl border border-brand-purple/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 bg-gradient-to-b from-brand-card to-purple-950/20">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="badge-combo text-white text-xs font-black px-3 py-1 rounded-full shadow">COMBO 9</span>
+                        <span class="text-xs text-brand-purple font-bold">3 Servicios</span>
+                    </div>
+                    <div class="flex items-center justify-center -space-x-3 my-6">
+                        <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center font-black text-white text-xl border-2 border-brand-dark shadow-lg">N</div>
+                        <div class="w-12 h-12 rounded-full bg-sky-500 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">Prime</div>
+                        <div class="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">HBO</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white text-center">Netflix + Prime Video + HBO Max</h3>
+                    <p class="text-xs text-gray-400 text-center mt-1">Cine y series de catálogo completo.</p>
+                    
+                    <div class="my-6 text-center">
+                        <span class="font-heading font-black text-3xl text-white">$23.000 <span class="text-xs text-gray-400 font-normal">COP / mes</span></span>
+                    </div>
+                </div>
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20el%20COMBO%209%20(Netflix%20+%20Prime%20Video%20+%20HBO%20Max)%20por%20$23.000COP" target="_blank" class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-whatsapp-glow transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar Combo 9</span>
+                </a>
+            </div>
+
+            <!-- COMBO 10 -->
+            <div class="glass-card rounded-2xl border border-brand-purple/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 bg-gradient-to-b from-brand-card to-purple-950/20">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="badge-combo text-white text-xs font-black px-3 py-1 rounded-full shadow">COMBO 10</span>
+                        <span class="text-xs text-brand-purple font-bold">3 Servicios</span>
+                    </div>
+                    <div class="flex items-center justify-center -space-x-3 my-6">
+                        <div class="w-12 h-12 rounded-full bg-sky-500 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">Prime</div>
+                        <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">Disney</div>
+                        <div class="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-lg">HBO</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-white text-center">Prime Video + Disney+ + HBO Max</h3>
+                    <p class="text-xs text-gray-400 text-center mt-1">Mucha variedad sin gastar de más.</p>
+                    
+                    <div class="my-6 text-center">
+                        <span class="font-heading font-black text-3xl text-white">$24.000 <span class="text-xs text-gray-400 font-normal">COP / mes</span></span>
+                    </div>
+                </div>
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20el%20COMBO%2010%20(Prime%20Video%20+%20Disney%20+%20HBO%20Max)%20por%20$24.000COP" target="_blank" class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-whatsapp-glow transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Comprar Combo 10</span>
+                </a>
+            </div>
+
+            <!-- COMBO 11 (MEGA COMBO) -->
+            <div class="glass-card rounded-2xl border-2 border-brand-pink/60 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 bg-gradient-to-b from-brand-card via-purple-950/30 to-pink-950/30 lg:col-span-2 relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-32 h-32 bg-brand-pink/20 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-gradient-to-r from-brand-pink to-brand-purple text-white text-xs font-black px-4 py-1 rounded-full shadow">COMBO 11 - MEGA PAQUETE</span>
+                        <span class="text-xs text-brand-pink font-bold">4 Servicios Completos</span>
+                    </div>
+                    <div class="flex items-center justify-center -space-x-3 my-6">
+                        <div class="w-14 h-14 rounded-full bg-sky-500 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-xl">Prime</div>
+                        <div class="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-xl">Disney</div>
+                        <div class="w-14 h-14 rounded-full bg-purple-700 flex items-center justify-center font-black text-white text-xs border-2 border-brand-dark shadow-xl">HBO</div>
+                        <div class="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center font-black text-white text-2xl border-2 border-brand-dark shadow-xl">N</div>
+                    </div>
+                    <h3 class="font-heading font-extrabold text-2xl text-white text-center">Prime Video + Disney+ + HBO Max + Netflix</h3>
+                    <p class="text-xs text-gray-300 text-center mt-1">El paquete definitivo con todas las plataformas principales para tu hogar.</p>
+                    
+                    <div class="my-6 text-center">
+                        <span class="font-heading font-black text-4xl text-brand-neon">$33.000 <span class="text-xs text-gray-300 font-normal">COP / mes</span></span>
+                    </div>
+                </div>
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20el%20COMBO%2011%20MEGA%20PAQUETE%20(4%20Plataformas)%20por%20$33.000COP" target="_blank" class="w-full bg-whatsapp hover:bg-whatsapp-hover text-white font-extrabold py-4 rounded-xl flex items-center justify-center gap-2 text-base shadow-whatsapp-glow transition-all">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Comprar Mega Combo 11</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. CATÁLOGO COMPLETO DE PLATAFORMAS INDIVIDUALES -->
+    <section id="catalog" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-brand-border">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+                Plataformas y Cuentas <span class="gradient-text">Individuales</span>
+            </h2>
+            <p class="text-gray-400 mt-2 text-sm sm:text-base">
+                Selecciona entre pantalla individual o cuenta completa según tu necesidad.
+            </p>
+
+            <!-- Buscador y Filtros -->
+            <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center">
+                <div class="relative w-full sm:w-80">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input type="text" id="search-input" placeholder="Buscar servicio (ej. Netflix, IPTV, Canva)..." 
+                           class="w-full bg-brand-card border border-brand-border rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-accent transition-colors">
+                </div>
+                <div class="flex gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 scrollbar-none">
+                    <button class="filter-btn active bg-brand-accent text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all" data-category="all">Todos</button>
+                    <button class="filter-btn bg-brand-card border border-brand-border text-gray-300 hover:text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all" data-category="cine">Cine y TV</button>
+                    <button class="filter-btn bg-brand-card border border-brand-border text-gray-300 hover:text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all" data-category="iptv">IPTV</button>
+                    <button class="filter-btn bg-brand-card border border-brand-border text-gray-300 hover:text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all" data-category="herramientas">Música e IA</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRID DE PRODUCTOS -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="products-grid">
+
+            <!-- NETFLIX RENOVABLE -->
+            <div class="product-card glass-card rounded-2xl border border-brand-border hover:border-red-500/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="cine" data-name="netflix renovable">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-600 to-red-950 flex items-center justify-center text-white font-black text-2xl shadow-lg border border-red-500/40">
+                            N
+                        </div>
+                        <span class="badge-discount text-white text-xs font-black px-3 py-1 rounded-full shadow">
+                            RENOVABLE
+                        </span>
+                    </div>
+
+                    <h3 class="font-heading font-bold text-xl text-white">Netflix Renovables</h3>
+                    <p class="text-xs text-gray-400 mt-1">Garantía y posibilidad de renovación mes a mes.</p>
+
+                    <div class="mt-4 bg-brand-dark/80 p-1 rounded-xl border border-brand-border flex text-xs font-semibold">
+                        <button class="plan-tab active w-1/2 py-2 rounded-lg bg-brand-card text-white shadow text-center transition-all" onclick="selectPlan(this, 'Netflix', '1 Pantalla', '$14.500 COP', '$25.000 COP')">
+                            Pantalla
+                        </button>
+                        <button class="plan-tab w-1/2 py-2 rounded-lg text-gray-400 hover:text-white text-center transition-all" onclick="selectPlan(this, 'Netflix', 'Cuenta Completa', '$60.000 COP', '$75.000 COP')">
+                            Completa
+                        </button>
+                    </div>
+
+                    <div class="my-5 flex items-baseline gap-2">
+                        <span class="price-display font-heading font-black text-2xl text-white">$14.500 COP</span>
+                        <span class="price-original text-xs text-gray-500 line-through">$25.000 COP</span>
+                    </div>
+
+                    <ul class="space-y-2 text-xs text-gray-300 border-t border-brand-border/60 pt-4 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Calidad Ultra HD / 4K</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Perfil renovable el siguiente mes</li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20Netflix%20-%20Pantalla%20por%20$14.500%20COP" 
+                   target="_blank" 
+                   class="btn-whatsapp-dynamic w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Solicitar por WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- DISNEY PREMIUM -->
+            <div class="product-card glass-card rounded-2xl border border-brand-border hover:border-blue-500/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="cine" data-name="disney premium">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-slate-950 flex items-center justify-center text-white font-black text-xl shadow-lg border border-blue-500/40">
+                            D+
+                        </div>
+                        <span class="badge-discount text-white text-xs font-black px-3 py-1 rounded-full shadow">
+                            PREMIUM
+                        </span>
+                    </div>
+
+                    <h3 class="font-heading font-bold text-xl text-white">Disney Premium</h3>
+                    <p class="text-xs text-gray-400 mt-1">Incluye ESPN en vivo, Star, Marvel y películas.</p>
+
+                    <div class="mt-4 bg-brand-dark/80 p-1 rounded-xl border border-brand-border flex text-xs font-semibold">
+                        <button class="plan-tab active w-1/2 py-2 rounded-lg bg-brand-card text-white shadow text-center transition-all" onclick="selectPlan(this, 'Disney Premium', '1 Pantalla', '$13.000 COP', '$20.000 COP')">
+                            Pantalla
+                        </button>
+                        <button class="plan-tab w-1/2 py-2 rounded-lg text-gray-400 hover:text-white text-center transition-all" onclick="selectPlan(this, 'Disney Premium', 'Cuenta Completa', '$50.000 COP', '$65.000 COP')">
+                            Completa
+                        </button>
+                    </div>
+
+                    <div class="my-5 flex items-baseline gap-2">
+                        <span class="price-display font-heading font-black text-2xl text-white">$13.000 COP</span>
+                        <span class="price-original text-xs text-gray-500 line-through">$20.000 COP</span>
+                    </div>
+
+                    <ul class="space-y-2 text-xs text-gray-300 border-t border-brand-border/60 pt-4 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Eventos deportivos en vivo por ESPN</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Excelente calidad y estabilidad</li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20Disney%20Premium%20-%20Pantalla%20por%20$13.000%20COP" 
+                   target="_blank" 
+                   class="btn-whatsapp-dynamic w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Solicitar por WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- HBO MAX -->
+            <div class="product-card glass-card rounded-2xl border border-brand-border hover:border-purple-500/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="cine" data-name="hbo max">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-700 to-indigo-950 flex items-center justify-center text-white font-black text-sm shadow-lg border border-purple-500/40">
+                            HBO
+                        </div>
+                        <span class="badge-discount text-white text-xs font-black px-3 py-1 rounded-full shadow">
+                            OFERTA
+                        </span>
+                    </div>
+
+                    <h3 class="font-heading font-bold text-xl text-white">HBO Max</h3>
+                    <p class="text-xs text-gray-400 mt-1">Series de HBO, películas de Warner y Champions League.</p>
+
+                    <div class="mt-4 bg-brand-dark/80 p-1 rounded-xl border border-brand-border flex text-xs font-semibold">
+                        <button class="plan-tab active w-1/2 py-2 rounded-lg bg-brand-card text-white shadow text-center transition-all" onclick="selectPlan(this, 'HBO', '1 Pantalla', '$8.000 COP', '$15.000 COP')">
+                            Pantalla
+                        </button>
+                        <button class="plan-tab w-1/2 py-2 rounded-lg text-gray-400 hover:text-white text-center transition-all" onclick="selectPlan(this, 'HBO', 'Cuenta Completa', '$25.000 COP', '$35.000 COP')">
+                            Completa
+                        </button>
+                    </div>
+
+                    <div class="my-5 flex items-baseline gap-2">
+                        <span class="price-display font-heading font-black text-2xl text-white">$8.000 COP</span>
+                        <span class="price-original text-xs text-gray-500 line-through">$15.000 COP</span>
+                    </div>
+
+                    <ul class="space-y-2 text-xs text-gray-300 border-t border-brand-border/60 pt-4 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Series originales y cine en 4K</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Acceso en TV, celular o PC</li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20HBO%20-%20Pantalla%20por%20$8.000%20COP" 
+                   target="_blank" 
+                   class="btn-whatsapp-dynamic w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Solicitar por WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- AMAZON PRIME VIDEO -->
+            <div class="product-card glass-card rounded-2xl border border-brand-border hover:border-sky-500/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="cine" data-name="amazon prime video">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-950 flex items-center justify-center text-white text-2xl shadow-lg border border-sky-400/40">
+                            <i class="fa-solid fa-film"></i>
+                        </div>
+                        <span class="badge-discount text-white text-xs font-black px-3 py-1 rounded-full shadow">
+                            ECONÓMICO
+                        </span>
+                    </div>
+
+                    <h3 class="font-heading font-bold text-xl text-white">Amazon Prime Video</h3>
+                    <p class="text-xs text-gray-400 mt-1">Series exclusivas y producciones originales de Prime.</p>
+
+                    <div class="mt-4 bg-brand-dark/80 p-1 rounded-xl border border-brand-border flex text-xs font-semibold">
+                        <button class="plan-tab active w-1/2 py-2 rounded-lg bg-brand-card text-white shadow text-center transition-all" onclick="selectPlan(this, 'Amazon Prime Video', '1 Pantalla', '$8.000 COP', '$15.000 COP')">
+                            Pantalla
+                        </button>
+                        <button class="plan-tab w-1/2 py-2 rounded-lg text-gray-400 hover:text-white text-center transition-all" onclick="selectPlan(this, 'Amazon Prime Video', 'Cuenta Completa', '$20.000 COP', '$28.000 COP')">
+                            Completa
+                        </button>
+                    </div>
+
+                    <div class="my-5 flex items-baseline gap-2">
+                        <span class="price-display font-heading font-black text-2xl text-white">$8.000 COP</span>
+                        <span class="price-original text-xs text-gray-500 line-through">$15.000 COP</span>
+                    </div>
+
+                    <ul class="space-y-2 text-xs text-gray-300 border-t border-brand-border/60 pt-4 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Excelente catálogo y calidad de video</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Entrega rápida</li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20Amazon%20Prime%20Video%20-%20Pantalla%20por%20$8.000%20COP" 
+                   target="_blank" 
+                   class="btn-whatsapp-dynamic w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Solicitar por WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- IPTV -->
+            <div class="product-card glass-card rounded-2xl border border-brand-border hover:border-emerald-500/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="iptv" data-name="iptv tv en vivo">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-950 flex items-center justify-center text-white text-2xl shadow-lg border border-emerald-400/40">
+                            <i class="fa-solid fa-tv"></i>
+                        </div>
+                        <span class="badge-discount text-white text-xs font-black px-3 py-1 rounded-full shadow">
+                            TV EN VIVO
+                        </span>
+                    </div>
+
+                    <h3 class="font-heading font-bold text-xl text-white">Servicio IPTV</h3>
+                    <p class="text-xs text-gray-400 mt-1">Miles de canales en vivo, eventos deportivos y películas.</p>
+
+                    <div class="mt-4 bg-brand-dark/80 p-1 rounded-xl border border-brand-border flex text-xs font-semibold">
+                        <button class="plan-tab active w-1/2 py-2 rounded-lg bg-brand-card text-white shadow text-center transition-all" onclick="selectPlan(this, 'IPTV', '1 Pantalla', '$15.000 COP', '$25.000 COP')">
+                            Pantalla
+                        </button>
+                        <button class="plan-tab w-1/2 py-2 rounded-lg text-gray-400 hover:text-white text-center transition-all" onclick="selectPlan(this, 'IPTV', 'Completa (3 Dispositivos)', '$30.000 COP', '$45.000 COP')">
+                            3 Dispositivos
+                        </button>
+                    </div>
+
+                    <div class="my-5 flex items-baseline gap-2">
+                        <span class="price-display font-heading font-black text-2xl text-white">$15.000 COP</span>
+                        <span class="price-original text-xs text-gray-500 line-through">$25.000 COP</span>
+                    </div>
+
+                    <ul class="space-y-2 text-xs text-gray-300 border-t border-brand-border/60 pt-4 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Fútbol y deportes premium en vivo</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Compatible con Smart TV, Tv Box, Celular</li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20IPTV%20-%20Pantalla%20por%20$15.000%20COP" 
+                   target="_blank" 
+                   class="btn-whatsapp-dynamic w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Solicitar por WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- SPOTIFY -->
+            <div class="product-card glass-card rounded-2xl border border-brand-border hover:border-green-500/50 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5" data-category="herramientas" data-name="spotify musica">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-green-950 flex items-center justify-center text-white text-2xl shadow-lg border border-green-400/40">
+                            <i class="fa-brands fa-spotify"></i>
+                        </div>
+                        <span class="badge-discount text-white text-xs font-black px-3 py-1 rounded-full shadow">
+                            MÚSICA
+                        </span>
+                    </div>
+
+                    <h3 class="font-heading font-bold text-xl text-white">Spotify Premium</h3>
+                    <p class="text-xs text-gray-400 mt-1">Música ilimitada sin anuncios y descargas offline.</p>
+
+                    <div class="mt-4 bg-brand-dark/80 p-1 rounded-xl border border-brand-border flex text-xs font-semibold">
+                        <button class="plan-tab active w-1/2 py-2 rounded-lg bg-brand-card text-white shadow text-center transition-all" onclick="selectPlan(this, 'Spotify', '1 Mes', '$13.000 COP', '$20.000 COP')">
+                            1 Mes
+                        </button>
+                        <button class="plan-tab w-1/2 py-2 rounded-lg text-gray-400 hover:text-white text-center transition-all" onclick="selectPlan(this, 'Spotify', '3 Meses', '$30.000 COP', '$50.000 COP')">
+                            3 Meses
+                        </button>
+                    </div>
+
+                    <div class="my-5 flex items-baseline gap-2">
+                        <span class="price-display font-heading font-black text-2xl text-white">$13.000 COP</span>
+                        <span class="price-original text-xs text-gray-500 line-through">$20.000 COP</span>
+                    </div>
+
+                    <ul class="space-y-2 text-xs text-gray-300 border-t border-brand-border/60 pt-4 mb-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Sin interrupciones ni comerciales</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Calidad de audio máxima</li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20Spotify%20-%201%20Mes%20por%20$13.000%20COP" 
+                   target="_blank" 
+                   class="btn-whatsapp-dynamic w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Solicitar por WhatsApp</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. POR QUÉ ELEGIRNOS / BENEFICIOS -->
+    <section id="benefits" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-brand-border">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
+                ¿Por qué elegir <span class="gradient-text">Angel Streaming</span>?
+            </h2>
+            <p class="text-gray-400 mt-2 text-sm">
+                Seguridad, rapidez y un servicio transparente respaldado por atención constante.
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass-card p-6 rounded-2xl border border-brand-border text-center space-y-3">
+                <div class="w-12 h-12 bg-brand-accent/20 text-brand-neon rounded-2xl flex items-center justify-center text-xl mx-auto border border-brand-accent/30">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h3 class="font-bold text-white text-base">Entrega Rápida</h3>
+                <p class="text-gray-400 text-xs">Aceptamos transferencias Bre-B y Daviplata. Activaciones rápidas por WhatsApp.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-brand-border text-center space-y-3">
+                <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-xl mx-auto border border-emerald-500/30">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3 class="font-bold text-white text-base">Garantía 100%</h3>
+                <p class="text-gray-400 text-xs">Cuentas totalmente respaldadas durante el periodo contratado.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-brand-border text-center space-y-3">
+                <div class="w-12 h-12 bg-brand-purple/20 text-brand-purple rounded-2xl flex items-center justify-center text-xl mx-auto border border-brand-purple/30">
+                    <i class="fa-solid fa-rotate text-xl"></i>
+                </div>
+                <h3 class="font-bold text-white text-base">Renovables Mes a Mes</h3>
+                <p class="text-gray-400 text-xs">Conserva tus perfiles y recomendaciones mes tras mes sin cambiar datos.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-brand-border text-center space-y-3">
+                <div class="w-12 h-12 bg-brand-pink/20 text-brand-pink rounded-2xl flex items-center justify-center text-xl mx-auto border border-brand-pink/30">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+                <h3 class="font-bold text-white text-base">Pagos con Bre-B</h3>
+                <p class="text-gray-400 text-xs">Medios de pago cómodos, inmediatos y seguros en Colombia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. PRUEBA SOCIAL / TESTIMONIOS -->
+    <section id="reviews" class="py-16 px-4 sm:px-6 lg:px-8 bg-brand-card/40 border-t border-brand-border">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <div class="flex items-center justify-center gap-1 text-amber-400 text-lg mb-2">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <h2 class="font-heading font-extrabold text-3xl text-white">Clientes Satisfechos</h2>
+                <p class="text-gray-400 text-xs sm:text-sm mt-1">Nuestra reputación se basa en la rapidez y la confianza.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Testimonio 1 -->
+                <div class="glass-card p-6 rounded-2xl border border-brand-border flex flex-col justify-between">
+                    <p class="text-gray-300 text-xs italic leading-relaxed mb-4">
+                        "Excelente servicio! Compré el Combo 11 con las 4 plataformas y me activaron súper rápido. Pagué por Bre-B sin ningún problema."
+                    </p>
+                    <div class="flex items-center gap-3 pt-3 border-t border-brand-border/60">
+                        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-white font-bold text-sm">
+                            AS
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-xs">Andrés S.</h4>
+                            <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-check-circle"></i> Cliente Frecuente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 2 -->
+                <div class="glass-card p-6 rounded-2xl border border-brand-border flex flex-col justify-between">
+                    <p class="text-gray-300 text-xs italic leading-relaxed mb-4">
+                        "Llevo 3 meses renovando el combo de Netflix + Prime Video. Todo estable y la atención al WhatsApp 3042124439 es inmediata."
+                    </p>
+                    <div class="flex items-center gap-3 pt-3 border-t border-brand-border/60">
+                        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-pink-500 to-rose-500 flex items-center justify-center text-white font-bold text-sm">
+                            LR
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-xs">Laura R.</h4>
+                            <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-check-circle"></i> Comprador Verificado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonio 3 -->
+                <div class="glass-card p-6 rounded-2xl border border-brand-border flex flex-col justify-between">
+                    <p class="text-gray-300 text-xs italic leading-relaxed mb-4">
+                        "Súper recomendado el Combo 6 (Prime + HBO Max) por $13k. Es un regalo de precio."
+                    </p>
+                    <div class="flex items-center gap-3 pt-3 border-t border-brand-border/60">
+                        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 to-red-500 flex items-center justify-center text-white font-bold text-sm">
+                            JM
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-xs">Juan M.</h4>
+                            <span class="text-[10px] text-emerald-400 font-semibold"><i class="fa-solid fa-check-circle"></i> Comprador Verificado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. PREGUNTAS FRECUENTES (FAQ ACORDEÓN) -->
+    <section id="faq" class="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full">
+        <div class="text-center mb-10">
+            <h2 class="font-heading font-extrabold text-3xl text-white">Preguntas Frecuentes</h2>
+            <p class="text-gray-400 text-xs sm:text-sm mt-1">Resolvemos tus dudas antes de realizar tu compra</p>
+        </div>
+
+        <div class="space-y-4" id="faq-accordion">
+            <!-- FAQ 1 -->
+            <div class="glass-card rounded-2xl border border-brand-border overflow-hidden">
+                <button class="w-full p-5 text-left font-bold text-white text-sm sm:text-base flex justify-between items-center focus:outline-none faq-btn">
+                    <span>¿Cómo se realiza la entrega después del pago?</span>
+                    <i class="fa-solid fa-chevron-down text-brand-neon transition-transform"></i>
+                </button>
+                <div class="px-5 pb-5 hidden text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-brand-border/40 pt-3">
+                    Enviando tu comprobante por WhatsApp al 3042124439, verificamos tu pago y te enviamos inmediatamente tus datos de acceso.
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="glass-card rounded-2xl border border-brand-border overflow-hidden">
+                <button class="w-full p-5 text-left font-bold text-white text-sm sm:text-base flex justify-between items-center focus:outline-none faq-btn">
+                    <span>¿Cuáles son los medios de pago disponibles?</span>
+                    <i class="fa-solid fa-chevron-down text-brand-neon transition-transform"></i>
+                </button>
+                <div class="px-5 pb-5 hidden text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-brand-border/40 pt-3">
+                    Aceptamos transferencias por Bre-B, Daviplata y otros medios locales en Colombia.
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="glass-card rounded-2xl border border-brand-border overflow-hidden">
+                <button class="w-full p-5 text-left font-bold text-white text-sm sm:text-base flex justify-between items-center focus:outline-none faq-btn">
+                    <span>¿Puedo renovar mi mismo servicio al mes siguiente?</span>
+                    <i class="fa-solid fa-chevron-down text-brand-neon transition-transform"></i>
+                </button>
+                <div class="px-5 pb-5 hidden text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-brand-border/40 pt-3">
+                    ¡Sí! Todos nuestros servicios y combos son 100% renovables mes a mes conservando tus perfiles.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. CTA FINAL CON SOLICITUD DIRECTA -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full text-center">
+        <div class="glass-card rounded-3xl p-8 sm:p-12 border border-brand-accent/30 bg-gradient-to-b from-brand-card via-brand-dark to-brand-card relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-60 h-60 bg-brand-accent/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <span class="inline-block text-brand-neon font-black text-xs uppercase tracking-widest bg-brand-accent/10 px-4 py-1.5 rounded-full border border-brand-accent/30 mb-4">
+                Atención Directa Angel Streaming
+            </span>
+
+            <h2 class="font-heading font-black text-3xl sm:text-4xl text-white">
+                ¿Listo para adquirir tu Combo o Plataforma? <span class="gradient-text">Escríbenos Ahora</span>
+            </h2>
+
+            <p class="text-gray-400 text-sm max-w-xl mx-auto mt-3 mb-8">
+                Haz clic en el botón para chatear directo al WhatsApp 3042124439 y solicitar tu cuenta en minutos.
+            </p>
+
+            <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20en%20Angel%20Streaming" 
+               target="_blank" 
+               class="inline-flex items-center justify-center gap-3 bg-whatsapp hover:bg-whatsapp-hover text-white font-extrabold text-base sm:text-lg px-8 py-4 rounded-2xl shadow-whatsapp-glow transition-all transform hover:scale-105">
+                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                <span>PEDIR SERVICIO POR WHATSAPP</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-brand-border bg-brand-dark py-8 px-4 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto space-y-4">
+            <div class="flex items-center justify-center gap-2 font-heading font-bold text-white text-lg">
+                <i class="fa-solid fa-play text-brand-accent"></i> Angel Streaming
+            </div>
+            <p>© 2026 Angel Streaming. Medios de pago autorizados Bre-B / Daviplata. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/573042124439?text=Hola!%20Quiero%20comprar%20servicios%20de%20Angel%20Streaming" 
+       target="_blank" 
+       class="pulse-whatsapp fixed bottom-6 right-6 z-50 bg-whatsapp text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform"
+       title="Chatear por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- SCRIPTS INTERACTIVOS -->
+    <script>
+        // 1. Contador Regresivo
+        function startTimer() {
+            let hours = 4, minutes = 28, seconds = 45;
+            const hElem = document.getElementById('timer-hours');
+            const mElem = document.getElementById('timer-minutes');
+            const sElem = document.getElementById('timer-seconds');
+
+            if (hElem && mElem && sElem) {
+                setInterval(() => {
+                    if (seconds > 0) {
+                        seconds--;
+                    } else {
+                        seconds = 59;
+                        if (minutes > 0) {
+                            minutes--;
+                        } else {
+                            minutes = 59;
+                            if (hours > 0) {
+                                hours--;
+                            } else {
+                                hours = 23;
+                            }
+                        }
+                    }
+                    hElem.textContent = hours < 10 ? '0' + hours : hours;
+                    mElem.textContent = minutes < 10 ? '0' + minutes : minutes;
+                    sElem.textContent = seconds < 10 ? '0' + seconds : seconds;
+                }, 1000);
+            }
+        }
+        startTimer();
+
+        // 2. Menú Hamburguesa Mobile
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // 3. Selección de Plan Dinámico
+        function selectPlan(btn, serviceKey, planName, newPrice, originalPrice) {
+            const card = btn.closest('.product-card');
+            if (!card) return;
+            
+            const tabs = card.querySelectorAll('.plan-tab');
+            tabs.forEach(t => {
+                t.classList.remove('active', 'bg-brand-card', 'text-white', 'shadow');
+                t.classList.add('text-gray-400');
+            });
+            btn.classList.add('active', 'bg-brand-card', 'text-white', 'shadow');
+            btn.classList.remove('text-gray-400');
+
+            const priceDisplay = card.querySelector('.price-display');
+            const originalDisplay = card.querySelector('.price-original');
+            if (priceDisplay) priceDisplay.textContent = newPrice;
+            if (originalDisplay) originalDisplay.textContent = originalPrice;
+
+            const waBtn = card.querySelector('.btn-whatsapp-dynamic');
+            const phone = "573042124439";
+            const message = encodeURIComponent(`Hola! Quiero comprar ${serviceKey} - ${planName} por el precio de ${newPrice}`);
+            if (waBtn) {
+                waBtn.href = `https://wa.me/${phone}?text=${message}`;
+            }
+        }
+
+        // 4. Filtro y Buscador de Productos
+        const searchInput = document.getElementById('search-input');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        function filterProducts() {
+            if (!searchInput) return;
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const activeFilterElem = document.querySelector('.filter-btn.active');
+            const activeFilter = activeFilterElem ? activeFilterElem.dataset.category : 'all';
+
+            productCards.forEach(card => {
+                const name = card.dataset.name ? card.dataset.name.toLowerCase() : '';
+                const category = card.dataset.category;
+
+                const matchesSearch = name.includes(searchTerm);
+                const matchesCategory = activeFilter === 'all' || category === activeFilter;
+
+                if (matchesSearch && matchesCategory) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', filterProducts);
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-brand-accent', 'text-white');
+                    b.classList.add('bg-brand-card', 'text-gray-300');
+                });
+                btn.classList.add('active', 'bg-brand-accent', 'text-white');
+                btn.classList.remove('bg-brand-card', 'text-gray-300');
+                filterProducts();
+            });
+        });
+
+        // 5. Acordeón para FAQs
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+
+                if (content) content.classList.toggle('hidden');
+                if (icon) {
+                    if (content && content.classList.contains('hidden')) {
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
